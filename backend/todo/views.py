@@ -8,8 +8,8 @@ from .models import Project, Todo
 from .serializers import ProjectModelSerializer, TodoModelSerializer
 from .filters import ProjectFilter, TodoFilter
 
-class ProjectLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 10
+# class ProjectLimitOffsetPagination(LimitOffsetPagination):
+#     default_limit = 10
 
 
 class TodoLimitOffsetPagination(LimitOffsetPagination):
@@ -19,14 +19,14 @@ class TodoLimitOffsetPagination(LimitOffsetPagination):
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    pagination_class = ProjectLimitOffsetPagination
+    # pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
 
 
 class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerializer
-    pagination_class = TodoLimitOffsetPagination
+    # pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
 
     def perform_create(self, serializer):

@@ -7,8 +7,8 @@ class Project(models.Model):
     repository = models.CharField(max_length=64)
     users = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 
 class Todo(models.Model):
