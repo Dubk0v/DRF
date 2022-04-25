@@ -1,0 +1,44 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$VsZ2ezHXyZticNZ2skTHc0$SWv/S4Zc0YOzdSQi7WexDuFI5mym1kxpLg5RqXHkf0o=",
+      "is_superuser": true,
+      "username": "root",
+      "first_name": "root",
+      "last_name": "root",
+      "email": "a@a.ru",
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$VsZ2ezHXyZticNZ2skTHc0$SWv/S4Zc0YOzdSQi7WexDuFI5mym1kxpLg5RqXHkf0o=",
+      "is_superuser": false,
+      "username": "root1",
+      "first_name": "root1",
+      "last_name": "root1",
+      "email": "a1@a.ru",
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+    {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$VsZ2ezHXyZticNZ2skTHc0$SWv/S4Zc0YOzdSQi7WexDuFI5mym1kxpLg5RqXHkf0o=",
+      "is_superuser": false,
+      "username": "root2",
+      "first_name": "root2",
+      "last_name": "root2",
+      "email": "a2@a.ru",
+      "is_staff": true,
+      "is_active": true
+    }
+  }
+]
