@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'rest_framework.authtoken',
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -163,4 +164,7 @@ SWAGGER_SETTINGS = {
             'name': 'Authorization'
         }
     },
+}
+GRAPHENE = {
+    "SCHEMA": "backend.schema.schema"
 }
