@@ -39,10 +39,11 @@ const ProjectDetail = ({projects, users, todo}) => {
                         <th>пользователь-создатель</th>
                         <th>заголовок</th>
                         <th>заметка</th>
+                        <th>Активность</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filtered_todo.map((todo)=> <TodoItem todo={todo}/>)}
+                    {filtered_todo.map((todo)=> <TodoItem todo={todo} users={users}/>)}
                 </tbody>
             </table>
             <h1>Пользователи:</h1>

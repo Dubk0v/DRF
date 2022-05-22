@@ -8,7 +8,10 @@ import Footer from './components/Footer.js'
 import ProjectList from './components/ProjectList.js'
 import TodoList from "./components/TodoList"
 import ProjectPage from "./components/ProjectPage"
+import ProjectForm from './components/ProjectForm.js';
+import ProjectUpdate from './components/ProjectUpdate.js';
 import Footer from './components/Footer.js'
+import TodoForm from './components/TodoForm.js';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import LoginForm from './components/Auth.js'
 import Cookies from 'universal-cookie';
@@ -108,7 +111,62 @@ class App extends React.Component {
             })
             .catch(error => console.log(error))
     }
+    createProject (name, repository_url, users) {
+        const headers = this.get_headers()
+        const data = {name: name, repository_url: repository_url, users: users}
+        console.log(data)
+        axios.post('http://127.0.0.1:8000/api/projects/', data, {headers})
+            .then(response => {
+//                let new_project = response.data
+//                const user = this.state.users.filter((item) => item.id === new_project.users)[0]
+//                new_book.author = author
+//                this.setState({books: [...this.state.books, new_book]})
+                this.load_data()    // лучше перезапрашивать данные, на случай если кто-то еще правит БД
+            }).catch(error => {console.log(error)})
+    }
 
+    updateProject (id, name, repository_url, users) {
+        const headers = this.get_headers()
+        const data = {id: id, name: name, repository_url: repository_url, users: users}
+        console.log('data before update',data)
+        axios.put(`http://127.0.0.1:8000/api/projects/${id}/`, data, {headers})
+            .then(response => {
+                this.load_data()
+            }).catch(error => {console.log(error)})
+    }
+
+    deleteProject (id) {
+        const headers = this.get_headers()
+        console.log('Id deleted project =', id)
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers})
+            .then(response => {
+//                this.setState(
+//                            {
+//                                projects: this.state.projects.filter((item)=>item.id !== id)
+//                            }
+//                    )
+                this.load_data()    // лучше перезапрашивать данные, на случай если кто-то еще правит БД
+            }).catch(error => {console.log(error)})
+    }
+
+    createTodo (project, user, title, text) {
+        const headers = this.get_headers()
+        const data = {project: project, user: user, title: title, text: text}
+        console.log('data = ', data)
+        axios.post('http://127.0.0.1:8000/api/todo/', data, {headers})
+            .then(response => {
+                this.load_data()    // лучше перезапрашивать данные, на случай если кто-то еще правит БД
+            }).catch(error => {console.log(error)})
+    }
+
+    deleteTodo (id) {
+        const headers = this.get_headers()
+        console.log('Id deleted todo =', id)
+        axios.delete(`http://127.0.0.1:8000/api/todo/${id}`, {headers})
+            .then(response => {
+                this.load_data()    // лучше перезапрашивать данные, на случай если кто-то еще правит БД
+            }).catch(error => {console.log(error)})
+    }
     render () {
         return (
 

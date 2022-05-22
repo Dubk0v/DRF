@@ -23,6 +23,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from graphene_django.views import GraphQLView
 from rest_framework import permissions
+from django.views.generic import TemplateView
+
 router = DefaultRouter()
 router.register('users', UserModelViewSet)
 router.register('projects', ProjectModelViewSet)
@@ -49,4 +51,5 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path("graphql/", GraphQLView.as_view(graphiql=True)),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
